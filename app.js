@@ -8,7 +8,7 @@ app.use(Express.json())
 
 app.use("/user", controllers.userController)
 
-//app.use("/cookbook", controllers.cookbookController)
+app.use("/cookbook", controllers.cookbookController)
 
 dbConnection.authenticate()
     .then(() => dbConnection.sync())
