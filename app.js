@@ -6,7 +6,7 @@ const controllers = require("./controllers")
 
 app.use(Express.json())
 
-//app.use("/user", controllers.userController)
+app.use("/user", controllers.userController)
 
 //app.use("/cookbook", controllers.cookbookController)
 
