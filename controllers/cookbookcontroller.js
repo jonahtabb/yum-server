@@ -31,5 +31,34 @@ router.post('/create', async (req, res) => {
     
 });
 
+/*
+===========
+Update Notes 
+===========
+ */
+
+router.put("/update/:entryId", async (req, res) => {
+    const {notes} = req.body.cookbook;
+    const CookbookId = req.params.entryId;
+
+    const query = {
+        where: {
+            id: CookbookId
+        }
+    };
+
+    const updatedNotes = {
+        notes: notes
+    };
+
+    try{
+        const update = await CookbookModel.update(updatedNotes, query);
+        res.status(200).json(update);
+    } catch (err) {
+        res.status(500).json({ error: err});
+    }
+
+});
+
 
 module.exports = router;
