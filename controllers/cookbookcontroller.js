@@ -30,12 +30,13 @@ router.get('/getall', async (req, res) => {
 router.delete('/delete/:id', async (req, res) => {
   //const ownerId = req.user.id;
   const CookbookId = req.params.id;
+  const { id } = req.user;
 
   try {
     const query = {
       where: {
         id: CookbookId,
-        //owner: ownerId,
+        userId: id
       },
     };
 
@@ -46,8 +47,6 @@ router.delete('/delete/:id', async (req, res) => {
   }
 });
 
-//Import the Cookbook Model
-const { CookbookModel } = require('../models');
 
 /*
 ================
@@ -55,9 +54,12 @@ Cookbook Create
 ================
 */
 
-router.post('/create', async (req, res) => {
+router.post('/create', validateJWT, async (req, res) => {
   const { recipeName, image, source, url, ingredients, notes } =
     req.body.cookbook;
+  const { id } = req.user;
+  console.log(req.user)
+
   const CookbookEntry = {
     recipeName,
     image,
@@ -65,6 +67,7 @@ router.post('/create', async (req, res) => {
     url,
     ingredients,
     notes,
+    userId: id
   };
   try {
     const newCookbook = await CookbookModel.create(CookbookEntry);
@@ -80,13 +83,15 @@ Update Notes
 ===========
  */
 
-router.put("/update/:entryId", async (req, res) => {
+router.put("/update/:entryId", validateJWT, async (req, res) => {
     const {notes} = req.body.cookbook;
     const CookbookId = req.params.entryId;
+    const { id } = req.user
 
     const query = {
         where: {
-            id: CookbookId
+            id: CookbookId,
+            userId: id
         }
     };
 
@@ -95,8 +100,10 @@ router.put("/update/:entryId", async (req, res) => {
     };
 
     try{
+      console.log(updatedNotes)
         const update = await CookbookModel.update(updatedNotes, query);
         res.status(200).json(update);
+        
     } catch (err) {
         res.status(500).json({ error: err});
     }

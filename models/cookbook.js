@@ -25,7 +25,11 @@ const Cookbook = db.define("cookbook", {
     notes: {
         type: DataTypes.STRING,
         allowNull: true
-    }
+    },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
 });
 
 module.exports = Cookbook;
