@@ -6,6 +6,8 @@ const controllers = require('./controllers');
 
 app.use(Express.json());
 
+app.use(require('./middleware/headers'))
+
 app.use('/user', controllers.userController);
 
 app.use(require("./middleware/validate-jwt"))
