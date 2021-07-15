@@ -10,10 +10,16 @@ Get all cookbook logs
 ====================
 */
 
-router.get('/getall', async (req, res) => {
+router.get('/getall', validateJWT, async (req, res) => {
   //console.log('entries');
+  const { id } = req.user;
+
   try {
-    const entries = await CookbookModel.findAll();
+    const entries = await CookbookModel.findAll({
+      where: {
+        userId: id
+      }
+    });
 
     res.status(200).json(entries);
   } catch (err) {
@@ -29,13 +35,13 @@ router.get('/getall', async (req, res) => {
 // */
 router.delete('/delete/:id', async (req, res) => {
   //const ownerId = req.user.id;
-  const CookbookId = req.params.id;
+  const recipeId = req.params.id;
   const { id } = req.user;
 
   try {
     const query = {
       where: {
-        id: CookbookId,
+        id: recipeId,
         userId: id
       },
     };
