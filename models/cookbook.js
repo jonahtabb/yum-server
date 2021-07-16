@@ -19,7 +19,7 @@ const Cookbook = db.define("cookbook", {
         allowNull: true
     },
     ingredients: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     notes: {
