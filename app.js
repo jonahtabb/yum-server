@@ -1,7 +1,7 @@
-require('dotenv').config();
+require('dotenv').config()
 const Express = require('express');
 const app = Express();
-const dbConnection = require('./db');
+const dbConnection = require('./db.js');
 
 const controllers = require('./controllers');
 
