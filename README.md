@@ -1,4 +1,4 @@
-# Poetry App Server
+# Yum Recipe App Server
 
 This server uses Express, Node.js, Sequelize, JWT Authentication, Bcrypt to create a backend for storing user logins and personal cookbooks for the yum app.  The server provides endpoints for the following routes:
 - User registration and login
