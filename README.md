@@ -6,6 +6,6 @@ This server uses Express, Node.js, Sequelize, JWT Authentication, Bcrypt to crea
 - Delete recipe entries 
 - Update notes for recipes
 
-The github repo for the client can be found at [https://github.com/hannahtoth/yum-client](https://github.com/hannahtoth/yum-client)
+The github repo for the client can be found at [https://github.com/jonahtabb/yum-client](https://github.com/jonahtabb/yum-client)
 
-The deployed app can be viewed at [http://efa-yumapp.herokuapp.com/](http://efa-yumapp.herokuapp.com/)
+The deployed app can be viewed at <a href="https://jtabb-yum-app.herokuapp.com/" target="_blank">https://jtabb-yum-app.herokuapp.com/</a>
