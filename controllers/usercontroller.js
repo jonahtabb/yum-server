@@ -4,7 +4,7 @@ const { UniqueConstraintError } = require("sequelize/lib/errors")
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("../models");
 
-router.get('/test', (req, res) => {
+router.get('/test',(req, res) => {
     res.send("Testing This Route!")
 })
 
